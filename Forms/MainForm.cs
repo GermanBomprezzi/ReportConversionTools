@@ -19,24 +19,7 @@ namespace ReportConversionTools.Forms
 
         private void generateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<CRUDConfigFilesForm>().Count() == 1)
-            {
-                MessageBox.Show(
-                    "Opening the SP generator while editing the configuration files is not allowed!",
-                    "Warning",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
 
-                return;
-            }
-
-            if (Application.OpenForms.OfType<GenerateTestForm>().Count() == 0)
-            {
-                GenerateStoreProcedureForm genSPForm = new GenerateStoreProcedureForm();
-                genSPForm.MdiParent = this;
-                genSPForm.Show();
-            }
         }
 
         private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -62,13 +45,24 @@ namespace ReportConversionTools.Forms
 
         }
 
-        private void searchAliasesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void generateAliasesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms.OfType<SearchAliasesForm>().Count() == 0)
+            if (Application.OpenForms.OfType<GenerateAliasesForm>().Count() == 0)
             {
-                SearchAliasesForm searchAliasesForm = new SearchAliasesForm();
+                GenerateAliasesForm searchAliasesForm = new GenerateAliasesForm();
                 searchAliasesForm.MdiParent = this;
                 searchAliasesForm.Show();
+            }
+        }
+
+
+        private void generateSPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms.OfType<GenerateSPForm>().Count() == 0)
+            {
+                GenerateSPForm generateSPForm = new GenerateSPForm();
+                generateSPForm.MdiParent = this;
+                generateSPForm.Show();
             }
         }
     }

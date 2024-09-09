@@ -1,6 +1,6 @@
 ﻿namespace ReportConversionTools.Forms
 {
-    partial class SearchAliasesForm
+    partial class GenerateAliasesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -187,12 +187,12 @@
             this.lblInvalidPath.ForeColor = System.Drawing.Color.Red;
             this.lblInvalidPath.Location = new System.Drawing.Point(725, 45);
             this.lblInvalidPath.Name = "lblInvalidPath";
-            this.lblInvalidPath.Size = new System.Drawing.Size(101, 16);
+            this.lblInvalidPath.Size = new System.Drawing.Size(91, 16);
             this.lblInvalidPath.TabIndex = 114;
-            this.lblInvalidPath.Text = "* invalid path!";
+            this.lblInvalidPath.Text = "invalid path!";
             this.lblInvalidPath.Visible = false;
             // 
-            // SearchAliasesForm
+            // GenerateAliasesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -210,13 +210,10 @@
             this.Controls.Add(this.lblScriptsFolder);
             this.Controls.Add(this.dgvAliases);
             this.Controls.Add(this.btnReset);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "SearchAliasesForm";
+            this.Name = "GenerateAliasesForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SEARCH ALIAS";
+            this.Text = "GENERATE ALIASES";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAliases)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFiles)).EndInit();
             this.ResumeLayout(false);

@@ -7,20 +7,20 @@ using System.Windows.Forms;
 
 namespace ReportConversionTools.Forms
 {
-    public partial class SearchAliasesForm : Form
+    public partial class GenerateAliasesForm : Form
     {
-        public SearchAliasesForm()
+        public GenerateAliasesForm()
         {
             InitializeComponent();
 
-            txtScriptsFolder.Text = DEFAULTPATH;
+            txtScriptsFolder.Text = DEFAULT_PATH;
 
             ChangeControlsVisibility(false);
         }
 
-        string[] FILEPATHS;
-        string WORDTOFIND;
-        string DEFAULTPATH = @"D:\Projects\Motility\InfinityW\Reports\DatabaseScripts";
+        string[] filePaths;
+        string wordToFind;
+        const string DEFAULT_PATH = @"D:\Projects\Motility\InfinityW\Reports\DatabaseScripts";
 
         private void dgvAliases_KeyDown(object sender, KeyEventArgs e)
         {
@@ -40,7 +40,7 @@ namespace ReportConversionTools.Forms
 
         private void dgvAliases_SelectionChanged(object sender, EventArgs e)
         {
-            if (FILEPATHS == null)
+            if (filePaths == null)
                 return;
 
             dgvFiles.Rows.Clear();
@@ -57,9 +57,9 @@ namespace ReportConversionTools.Forms
             wordToFind = wordToFind.Replace(" ", string.Empty);
             wordToFind += " AS";
 
-            WORDTOFIND = wordToFind;
+            this.wordToFind = wordToFind;
 
-            foreach (string path in FILEPATHS)
+            foreach (string path in filePaths)
             {
                 string[] lines = File.ReadAllLines(path);
                 var enumerator = lines.GetEnumerator();
@@ -94,28 +94,26 @@ namespace ReportConversionTools.Forms
 
             txtFile.Text = File.ReadAllText(sqlFile);
 
-            int index = txtFile.Text.IndexOf(WORDTOFIND);
+            int index = txtFile.Text.IndexOf(wordToFind);
 
             while (index != -1)
             {
-                txtFile.Select(index, WORDTOFIND.Length);
+                txtFile.Select(index, wordToFind.Length);
                 txtFile.SelectionColor = Color.Red;
 
                 txtFile.SelectionStart = index;
                 txtFile.Focus();
 
-                index = txtFile.Text.IndexOf(WORDTOFIND, index + WORDTOFIND.Length);
+                index = txtFile.Text.IndexOf(wordToFind, index + wordToFind.Length);
 
             }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            bool pathsLoaded = false;
-
             if (!string.IsNullOrEmpty(txtScriptsFolder.Text))
             {
-                pathsLoaded = LoadFilePaths();
+                LoadFilePaths();
             }
             else
             {
@@ -124,20 +122,20 @@ namespace ReportConversionTools.Forms
                     if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                     {
                         txtScriptsFolder.Text = folderBrowserDialog.SelectedPath;
-                        pathsLoaded = LoadFilePaths();
+                        LoadFilePaths();
                     }
 
                 }
             }
 
-            if (pathsLoaded)
+            if (!lblInvalidPath.Visible)
             {
                 txtScriptsFolder.Enabled = false;
                 btnSelect.Visible = false;
                 btnReset.Visible = true;
             }
 
-            ChangeControlsVisibility(pathsLoaded);
+            ChangeControlsVisibility(!lblInvalidPath.Visible);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -153,15 +151,15 @@ namespace ReportConversionTools.Forms
             ChangeControlsVisibility(false);
         }
 
-        private bool LoadFilePaths()
+        private void LoadFilePaths()
         {
             try
             {
-                FILEPATHS = Directory.GetFileSystemEntries(txtScriptsFolder.Text, "*", SearchOption.AllDirectories)
+                filePaths = Directory.GetFileSystemEntries(txtScriptsFolder.Text, "*", SearchOption.AllDirectories)
                     .Where(s => s.Contains(".sql"))
                     .ToArray();
 
-                if (FILEPATHS.Count() == 0)
+                if (filePaths.Count() == 0)
                 {
                     lblInvalidPath.Text = "no sql files were found!";
                     lblInvalidPath.Visible = true;
@@ -185,11 +183,6 @@ namespace ReportConversionTools.Forms
                 lblInvalidPath.Text = "unauthorized asccess!";
                 lblInvalidPath.Visible = true;
             }
-
-
-            // lblInvalidPath.Visible = false => Loaded successfully.
-            // lblInvalidPath.Visible = true => Failed to load.
-            return !lblInvalidPath.Visible;
 
         }
 

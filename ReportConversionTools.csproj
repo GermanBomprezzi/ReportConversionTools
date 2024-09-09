@@ -49,17 +49,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\SQLHighlightRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\CRUDConfigFilesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CRUDConfigFilesForm.Designer.cs">
       <DependentUpon>CRUDConfigFilesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SearchAliasesForm.cs">
+    <Compile Include="Forms\GenerateAliasesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SearchAliasesForm.Designer.cs">
-      <DependentUpon>SearchAliasesForm.cs</DependentUpon>
+    <Compile Include="Forms\GenerateAliasesForm.Designer.cs">
+      <DependentUpon>GenerateAliasesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GenerateSPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GenerateSPForm.Designer.cs">
+      <DependentUpon>GenerateSPForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GenerateTestForm.cs">
       <SubType>Form</SubType>
@@ -79,15 +88,19 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Parameter.cs" />
     <Compile Include="Models\Root.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\CONSTANTS.cs" />
-    <EmbeddedResource Include="Forms\SearchAliasesForm.resx">
-      <DependentUpon>SearchAliasesForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\GenerateAliasesForm.resx">
+      <DependentUpon>GenerateAliasesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUDConfigFilesForm.resx">
       <DependentUpon>CRUDConfigFilesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GenerateSPForm.resx">
+      <DependentUpon>GenerateSPForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GenerateTestForm.resx">
       <DependentUpon>GenerateTestForm.cs</DependentUpon>
@@ -121,6 +134,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\sp_default.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

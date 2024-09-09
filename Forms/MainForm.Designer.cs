@@ -30,10 +30,9 @@
         {
             this.menu = new System.Windows.Forms.MenuStrip();
             this.viewMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.genViewMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchAliasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateAliasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.genSPMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateSPMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,41 +57,32 @@
             // viewMenuItem
             // 
             this.viewMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.genViewMenuItem,
-            this.searchAliasesToolStripMenuItem});
+            this.generateAliasesToolStripMenuItem});
             this.viewMenuItem.Name = "viewMenuItem";
             this.viewMenuItem.Size = new System.Drawing.Size(55, 24);
             this.viewMenuItem.Text = "View";
             // 
-            // genViewMenuItem
+            // generateAliasesToolStripMenuItem
             // 
-            this.genViewMenuItem.Name = "genViewMenuItem";
-            this.genViewMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.genViewMenuItem.Text = "Generate";
-            this.genViewMenuItem.Visible = false;
-            // 
-            // searchAliasesToolStripMenuItem
-            // 
-            this.searchAliasesToolStripMenuItem.Name = "searchAliasesToolStripMenuItem";
-            this.searchAliasesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.searchAliasesToolStripMenuItem.Text = "Search aliases";
-            this.searchAliasesToolStripMenuItem.Click += new System.EventHandler(this.searchAliasesToolStripMenuItem_Click);
+            this.generateAliasesToolStripMenuItem.Name = "generateAliasesToolStripMenuItem";
+            this.generateAliasesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.generateAliasesToolStripMenuItem.Text = "Generate aliases";
+            this.generateAliasesToolStripMenuItem.Click += new System.EventHandler(this.generateAliasesToolStripMenuItem_Click);
             // 
             // spMenuItem
             // 
             this.spMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.genSPMenuItem});
+            this.generateSPMenuItem});
             this.spMenuItem.Name = "spMenuItem";
             this.spMenuItem.Size = new System.Drawing.Size(129, 24);
             this.spMenuItem.Text = "Store Procedure";
-            this.spMenuItem.Visible = false;
             // 
-            // genSPMenuItem
+            // generateSPMenuItem
             // 
-            this.genSPMenuItem.Name = "genSPMenuItem";
-            this.genSPMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.genSPMenuItem.Text = "Generate";
-            this.genSPMenuItem.Click += new System.EventHandler(this.generateToolStripMenuItem_Click);
+            this.generateSPMenuItem.Name = "generateSPMenuItem";
+            this.generateSPMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.generateSPMenuItem.Text = "Generate";
+            this.generateSPMenuItem.Click += new System.EventHandler(this.generateSPToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
@@ -148,14 +138,13 @@
 
         private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem spMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem genSPMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generateSPMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem genViewMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem searchAliasesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generateAliasesToolStripMenuItem;
     }
 }
 
