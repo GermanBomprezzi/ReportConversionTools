@@ -4,6 +4,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
+using ReportConversionTools.Helpers;
 
 namespace ReportConversionTools.Forms
 {
@@ -34,6 +36,11 @@ namespace ReportConversionTools.Forms
                 foreach (string line in lines)
                 {
                     dgvAliases.Rows.Add(line);
+                }
+
+                if (dgvAliases.Rows.Count > 0)
+                {
+                    InvokeHelper();
                 }
             }
         }
@@ -193,6 +200,31 @@ namespace ReportConversionTools.Forms
             txtFile.Visible = state;
             lblTutorial2.Visible = state;
             lblTutorial3.Visible = state;
+        }
+
+
+        private void InvokeHelper()
+        {
+            string reportName = Interaction.InputBox("Please provide the name of the report for the first column.", "Report Name");
+            string viewOrSPName = Interaction.InputBox("Please provide the name of the view or stored procedure for the second column.", "View or SP Name");
+
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Report Name", typeof(string));
+            dt.Columns.Add("View/SP", typeof(string));
+            dt.Columns.Add("Column", typeof(string));
+            dt.Columns.Add("Alias", typeof(string));
+
+            foreach (DataGridViewRow row in dgvAliases.Rows)
+            {
+                dt.Rows.Add(reportName, viewOrSPName, row.Cells[0].Value, "");
+            }
+
+            if (Application.OpenForms.OfType<DataGridHelperForm>().Count() == 0)
+            {
+                DataGridHelperForm dataGridHelperForm = new DataGridHelperForm(dt);
+                dataGridHelperForm.Show();
+            }
         }
     }
 }
