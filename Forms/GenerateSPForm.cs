@@ -48,7 +48,7 @@ namespace ReportConversionTools.Forms
         const string FIRST_LINE_OF_THE_DICTIONARY = "//PARAMETERS_START-->";
         const string LAST_LINE_OF_THE_DICTIONARY = "//<--PARAMETERS_END";
 
-        const string FIRST_LINE_OF_THE_CLASS = "Private Function CreateFilter()";
+        const string FIRST_LINE_OF_THE_CLASS = "Private Function CreateFilter(";
         const string LAST_LINE_OF_THE_CLASS = "End Function";
 
         DataTable paramDataTable = new DataTable();
@@ -155,6 +155,9 @@ namespace ReportConversionTools.Forms
             {
                 txtClass.AppendText(lines[i] + "\n");
             }
+
+            txtClass.SelectionStart = 0;
+            txtClass.Focus();
         }
 
         private Exception ReadAllLines(ref string[] lines, string path, Label errorLabel)
