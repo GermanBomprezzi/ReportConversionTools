@@ -61,7 +61,9 @@ namespace ReportConversionTools.Forms
             if (wordToFind.EndsWith("\r"))
                 wordToFind = wordToFind.Remove(wordToFind.Length - 1);
 
-            wordToFind = wordToFind.Replace(" ", string.Empty);
+            if (wordToFind.Contains(" "))
+                wordToFind = "[" + wordToFind + "]";
+
             wordToFind += " AS";
 
             this.wordToFind = wordToFind;
