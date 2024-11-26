@@ -61,7 +61,7 @@ namespace ReportConversionTools.Forms
             if (wordToFind.EndsWith("\r"))
                 wordToFind = wordToFind.Remove(wordToFind.Length - 1);
 
-            if (wordToFind.Contains(" "))
+            if (wordToFind.Contains(" ") && !wordToFind.Contains("["))
                 wordToFind = "[" + wordToFind + "]";
 
             wordToFind += " AS";
